@@ -1,6 +1,12 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h2>{{ hello }}</h2>
+    <h2>{{ hello + ' and hello world !' }}</h2>
+
+    <input type="text" v-model="hello" />
+    <input type="checkbox" v-model="toggle" />{{ toggle }}
+
     <h2>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
@@ -22,10 +28,12 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      hello: 'Hello Vue !',
+      toggle: false
     }
   }
 }
