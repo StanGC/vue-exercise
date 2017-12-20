@@ -4,10 +4,13 @@ import VueRouter from 'vue-router'
 // init
 Vue.use(VueRouter)
 
+// root page
+import App from './App.vue';
+
 // page
 import Hello from './pages/Hello.vue';
 import CtoF from './pages/CtoF.vue';
-import App from './App.vue';
+import learnComponent from './pages/learnComponent.vue';
 
 const router = new VueRouter({
 
@@ -24,6 +27,11 @@ const router = new VueRouter({
       path: '/c2f',
       name: 'c2f',
       component: CtoF
+    },
+    {
+      path: '/learnComponent',
+      name: 'learnComponent',
+      component: learnComponent
     },
 
     { path: '/*', redirect: '/hello' }
