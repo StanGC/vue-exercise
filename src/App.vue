@@ -1,7 +1,10 @@
 <template>
   <div>
-    <router-link :to="{path: '/hello'}">Hello</router-link>
-    <router-link :to="{name: 'c2f'}">CtoF</router-link>
+    <div class="my-nav">
+      <router-link :to="{path: '/hello'}">Hello</router-link>
+      <router-link :to="{name: 'c2f'}">CtoF</router-link>
+      <router-link :to="{name: 'learnComponent'}">learnComponent</router-link>
+    </div>
 
     <router-view></router-view>
   </div>
@@ -13,12 +16,13 @@
 </script>
 
 <style>
-  body {
-    font-family: 'Avenir', "微軟正黑體", Helvetica, Arial, sans-serif;
-    color: #2c3e50;
+  .my-nav {
+    position: fixed;
+    top: 60px;
+    padding: 0 10px;
   }
-  .container {
-    width: 768px;
-    margin: 0 auto;
+  .my-nav a {
+    display: block;
+    margin-bottom: 10px;
   }
 </style>
