@@ -1,28 +1,32 @@
 <template>
   <div class="container">
-    <h2>count:<span class="count"> {{ count }}</span></h2>
-    <button @click="actionIncrease"> + </button>
-    <button @click="actionDecrease"> - </button>
+    <h2 style="color: red;">count: {{ count }}</h2>
+    Set Number:
+    <input type='number' v-model='num' style="width: 50px;"><br/>
+    <button @click="actionIncrease(num)">+{{ num }}</button>
+    <button @click="actionDecrease(num)">-{{ num }}</button>
+    <button @click="actionCountReset">歸零</button>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  computed: {
-    ...mapGetters({
-      count: 'getCount',
-    }),
+  data () {
+    return {
+      num: 1
+    }
   },
+  computed: mapGetters({
+    count: 'getCount',
+  }),
   methods: {
     ...mapActions([
       'actionIncrease',
       'actionDecrease',
-    ]),
-    callAction() {
-      this.actionIncrease;
-    }
-  },
+      'actionCountReset'
+    ])
+  }
 }
 </script>
 

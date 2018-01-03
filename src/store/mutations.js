@@ -6,10 +6,16 @@ export const state = {
 }
 
 export const mutations = {
-  [types.INCREASE] (state) {
-    state.count += 1;
+  [types.INCREASE] (state, num) {
+    state.count += num;
+    console.log('INCREASE', num, 'state?', state.count);
   },
-  [types.DECREASE] (state) {
-    state.count -= 1;
+  [types.DECREASE] (state, num) {
+    state.count -= num;
+    console.log('DECREASE', num, 'state?', state.count);
+  },
+  [types.COUNT_RESET] (state) {
+    state.count = 0;
+    console.log('COUNT_RESET - state?', state.count);
   },
 }
