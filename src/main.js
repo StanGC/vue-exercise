@@ -13,6 +13,7 @@ import Hello from './pages/Hello.vue';
 import CtoF from './pages/CtoF.vue';
 import learnComponent from './pages/learnComponent.vue';
 import count from './pages/count.vue';
+import todo from './pages/todo.vue';
 
 const router = new VueRouter({
 
@@ -40,8 +41,13 @@ const router = new VueRouter({
       name: 'count',
       component: count
     },
+    {
+      path: '/todo',
+      name: 'todo',
+      component: todo
+    },
 
-    { path: '/*', redirect: '/count' }
+    { path: '/*', redirect: '/todo' }
   ]
 });
 
