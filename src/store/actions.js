@@ -21,3 +21,11 @@ export const actionCountReset = ({ commit }) => {
 export const addTodo = ({ commit }, newTodo) => {
   commit(types.ADD_TODO, newTodo);
 }
+
+export const toggleTodo = ({ commit }, key) => {
+  commit(types.TOGGLE_TODO, key);
+}
+
+export const deleteTodo = ({ commit }, key) => {
+  commit(types.DELETE_TODO, key);
+}
