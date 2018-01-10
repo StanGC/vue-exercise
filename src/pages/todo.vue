@@ -21,24 +21,14 @@
     <div class="row">
       <div class="col-md-6">
         <h2>Todo List:</h2>
-        <li v-for="(item, index) in todoList">
-          <label>
-            <input
-              type="checkbox"
-              :checked="item.done"
-              @change="toggleTodo( item.key )">
-              {{ item.content }}
-          </label>
-
-          <button class="btn btn-xs btn-danger" @click="deleteTodo( item.key )">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-          </button>
-        </li>
+        <ol>
+          <todoItem v-for="(item, index) in todoList" :item="item" />
+        </ol>
       </div>
 
       <div class="col-md-6">
         <h2>Done List:</h2>
-        <ul >
+        <ol>
           <li v-for="(item, index) in doneList">
             <label>
               <input
@@ -48,15 +38,19 @@
                 {{ item.content }}
             </label>
           </li>
-        </ul>
+        </ol>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex';
+import todoItem from '../components/todo-item.vue';
 export default {
+  components: {
+    todoItem
+  },
   data () {
     return {
       newTodo: ''

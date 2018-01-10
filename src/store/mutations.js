@@ -29,7 +29,7 @@ export const mutations = {
   },
 
   // todo
-  [types.ADD_TODO] (state, newTodo) {
+  [types.CREATE_TODO] (state, newTodo) {
     state.todos.push({
       key: todoKey,
       content: newTodo,
@@ -56,7 +56,19 @@ export const mutations = {
       if ( item.key === key){
         console.log('DELETE_TODO:', item.content, ', index?', i);
         state.todos.splice(i, 1);
-        break
+        break;
+      }
+    }
+  },
+
+  // 更新
+  [types.UPDATE_TODO] (state, obj) {
+    for(var i in state.todos){
+      var item = state.todos[i];
+      if ( item.key === obj.key){
+        console.log('UPDATE_TODO:', item.content, ' to →', obj.update);
+        state.todos[ i ].content = obj.update;
+        break;
       }
     }
   },
