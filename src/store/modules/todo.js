@@ -1,8 +1,11 @@
-import * as types from './mutations_type.js'
-import Vue from 'vue'
+const types = {
+  CREATE_TODO: 'todo/CREATE_TODO',
+  TOGGLE_TODO: 'todo/TOGGLE_TODO',
+  DELETE_TODO: 'todo/DELETE_TODO',
+  UPDATE_TODO: 'todo/UPDATE_TODO',
+}
 
-export const state = {
-  count: 0,
+const state = {
   todos: [
     { key: 0, content: 'todo1', done: true },
     { key: 1, content: 'todo2', done: false },
@@ -12,23 +15,41 @@ export const state = {
   ]
 }
 
+const getters = {
+  getDone (state) {
+    return state.todos.filter((item) => {
+      return item.done;
+    });
+  },
+  getTodo (state) {
+    return state.todos.filter((item) => {
+      return !item.done;
+    });
+  }
+}
+
+const actions = {
+  addTodo ({ commit }, newTodo) {
+    commit(types.CREATE_TODO, newTodo);
+  },
+  toggleTodo ({ commit }, obj) {
+    console.log('toggleTodo', obj);
+    commit(types.TOGGLE_TODO, obj);
+  },
+  deleteTodo ({ commit }, key) {
+    commit(types.DELETE_TODO, key);
+  },
+  updateTodo ({ commit }, obj) {
+    console.log('updateTodo', obj);
+    commit(types.UPDATE_TODO, obj);
+  },
+}
+
+// 流水 key
 let todoKey = state.todos.length;
 
-export const mutations = {
-  [types.INCREASE] (state, num) {
-    state.count += num;
-    console.log('INCREASE', num, 'state?', state.count);
-  },
-  [types.DECREASE] (state, num) {
-    state.count -= num;
-    console.log('DECREASE', num, 'state?', state.count);
-  },
-  [types.COUNT_RESET] (state) {
-    state.count = 0;
-    console.log('COUNT_RESET - state?', state.count);
-  },
-
-  // todo
+const mutations = {
+  // 新增
   [types.CREATE_TODO] (state, newTodo) {
     state.todos.push({
       key: todoKey,
@@ -72,4 +93,11 @@ export const mutations = {
       }
     }
   },
+}
+
+export default {
+  state,
+  getters,
+  actions,
+  mutations
 }
