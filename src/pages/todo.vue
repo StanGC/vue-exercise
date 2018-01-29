@@ -35,10 +35,6 @@
         </ol>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6"><pre>get Count & Todo: {{ getCountandTodo }}</pre></div>
-      <div class="col-md-6"><pre>get all state: {{ getAllstate }}</pre></div>
-    </div>
   </div>
 </template>
 

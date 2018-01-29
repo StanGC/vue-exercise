@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store';
+import shop from './pages/shop.vue';
 
 // init
 Vue.use(VueRouter)
@@ -46,8 +47,13 @@ const router = new VueRouter({
       name: 'todo',
       component: todo
     },
+    {
+      path: '/shop',
+      name: 'shop',
+      component: shop
+    },
 
-    { path: '/*', redirect: '/todo' }
+    { path: '/*', redirect: '/shop' }
   ]
 });
 
