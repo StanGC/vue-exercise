@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store';
 import shop from './pages/shop.vue';
+import cart from './pages/cart.vue';
 
 // init
 Vue.use(VueRouter)
@@ -51,6 +52,11 @@ const router = new VueRouter({
       path: '/shop',
       name: 'shop',
       component: shop
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: cart
     },
 
     { path: '/*', redirect: '/shop' }

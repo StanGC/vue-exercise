@@ -1,5 +1,6 @@
 const types = {
   ADD_CART: 'store/ADD_CART',
+  CANCEL_CART: 'store/CANCEL_CART'
 }
 
 const state = {
@@ -35,6 +36,13 @@ const state = {
 const getters = {
   getProducts: state => state.products,
   getShoppingCartTotal: state => state.shoppingCart.length,
+  getShoppingCart: state => state.shoppingCart,
+  getCartPriceTotal: state => state.shoppingCart.reduce((a, b) => a + b.price, 0 ),
+  getRecommendedProducts: state => {
+    const inventoryList = state.products.filter(p => p.inventory > 0);
+    const random = Math.round(Math.random() * (inventoryList.length - 1));
+    return inventoryList[ random ];
+  }
 }
 
 const actions = {
@@ -54,6 +62,12 @@ const mutations = {
       title: product.title,
       price: product.price,
     });
+  },
+  [types.CANCEL_CART] (state, title) {
+    const cartIndex = state.shoppingCart.findIndex(item => item.title === title);
+    state.shoppingCart.splice(cartIndex, 1);
+    const product = state.products.find(item => item.title === title);
+    product.inventory += 1;
   },
 }
 
