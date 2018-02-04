@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import store from './store';
 import shop from './pages/shop.vue';
 import cart from './pages/cart.vue';
+import open1999 from './pages/open1999.vue';
 
 // init
 Vue.use(VueRouter)
@@ -58,8 +59,13 @@ const router = new VueRouter({
       name: 'cart',
       component: cart
     },
+    {
+      path: '/open1999',
+      name: 'open1999',
+      component: open1999
+    },
 
-    { path: '/*', redirect: '/shop' }
+    { path: '/*', redirect: '/open1999' }
   ]
 });
 
