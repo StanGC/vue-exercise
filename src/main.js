@@ -17,6 +17,7 @@ import CtoF from './pages/CtoF.vue';
 import learnComponent from './pages/learnComponent.vue';
 import count from './pages/count.vue';
 import todo from './pages/todo.vue';
+import login from './pages/login.vue';
 
 const router = new VueRouter({
 
@@ -64,8 +65,13 @@ const router = new VueRouter({
       name: 'open1999',
       component: open1999
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
+    },
 
-    { path: '/*', redirect: '/open1999' }
+    { path: '/*', redirect: '/login' }
   ]
 });
 

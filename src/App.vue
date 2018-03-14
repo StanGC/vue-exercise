@@ -23,6 +23,7 @@
             <li><router-link :to="{name: 'shop'}">Shop</router-link></li>
             <li><router-link :to="{name: 'cart'}">Cart</router-link></li>
             <li><router-link :to="{name: 'open1999'}">open1999</router-link></li>
+            <li><router-link :to="{name: 'login'}">login</router-link></li>
           </ul>
           <slot name="navbar-form"></slot>
           <slot name="navbar-right"></slot>
