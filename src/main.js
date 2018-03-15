@@ -28,51 +28,77 @@ const router = new VueRouter({
     {
       path: '/hello',
       name: 'hello',
-      component: Hello
+      component: Hello,
+      meta: { requiresAuth: true },
     },
     {
       path: '/c2f',
       name: 'c2f',
-      component: CtoF
+      component: CtoF,
+      meta: { requiresAuth: true },
     },
     {
       path: '/learnComponent',
       name: 'learnComponent',
-      component: learnComponent
+      component: learnComponent,
+      meta: { requiresAuth: true },
     },
     {
       path: '/count',
       name: 'count',
-      component: count
+      component: count,
+      meta: { requiresAuth: true },
     },
     {
       path: '/todo',
       name: 'todo',
-      component: todo
+      component: todo,
+      meta: { requiresAuth: true },
     },
     {
       path: '/shop',
       name: 'shop',
-      component: shop
+      component: shop,
+      meta: { requiresAuth: true },
     },
     {
       path: '/cart',
       name: 'cart',
-      component: cart
+      component: cart,
+      meta: { requiresAuth: false },
     },
     {
       path: '/open1999',
       name: 'open1999',
-      component: open1999
+      component: open1999,
+      meta: { requiresAuth: true },
     },
     {
       path: '/login',
       name: 'login',
-      component: login
+      component: login,
+      meta: { requiresAuth: false },
     },
 
     { path: '/*', redirect: '/login' }
   ]
+});
+
+router.beforeEach((to, from, next) => {
+  console.log('to=', to.fullPath, '| from=', from.fullPath);
+  if (to.matched.some(record => {
+    console.log(record.name, record.meta.requiresAuth);
+    return record.meta.requiresAuth;
+  })) {
+    console.log('token?', store.state.token);
+    if (store.state.token === '') {
+      next({ path: '/login' });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 new Vue({

@@ -57,6 +57,9 @@ export default {
         console.log('error get Promise reject!');
       });
     }
+  },
+  created () {
+    console.log('vue created:', this.$route.matched[0]);
   }
 }
 </script>

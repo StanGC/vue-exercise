@@ -2,6 +2,7 @@ import * as types from './mutations_types.js';
 
 export const state = {
   loading: false,
+  token: '',
 }
 
 export const actions = {
@@ -15,6 +16,7 @@ export const actions = {
       setTimeout(() => {
         if (email === 'test@test.com' && password === '123456') {
           console.log('2. Promise resolve');
+          commit(types.TOKEN, '3345678');
           commit(types.LOADING, false);
           resolve();
         }
@@ -30,5 +32,8 @@ export const actions = {
 export const mutations = {
   [types.LOADING] (state, isLoading) {
     state.loading = isLoading;
+  },
+  [types.TOKEN] (state, token) {
+    state.token = token;
   },
 }
