@@ -24,6 +24,8 @@
             <li><router-link :to="{name: 'cart'}">Cart</router-link></li>
             <li><router-link :to="{name: 'open1999'}">open1999</router-link></li>
             <li><router-link :to="{name: 'login'}">login</router-link></li>
+            <li><router-link :to="{name: 'multiple'}">multiples views</router-link></li>
+            <li><router-link :to="{path: '/shop/cart'}">nested routes</router-link></li>
           </ul>
           <slot name="navbar-form"></slot>
           <slot name="navbar-right"></slot>
@@ -32,6 +34,16 @@
     </nav>
 
     <router-view></router-view>
+
+    <!--
+      multiples views
+      多重顯示，在 router-view 設定 name 之後可以嵌入特定 Page
+      沒有設定 name 的 view 使用 `default` 設定
+    -->
+    <div class="row">
+      <router-view name="viewLeft" class="col-md-6 viewLeft"></router-view>
+      <router-view name="viewRight" class="col-md-6 viewRight"></router-view>
+    </div>
   </div>
 </template>
 
@@ -44,4 +56,12 @@
   }
 </script>
 
-<style lang="scss" src="./assets/css/bootstrap/stylesheets/_bootstrap.scss"></style>
+<style lang="scss">
+  .nested-routes,
+  .viewRight {
+    border: solid 2px red;
+  }
+  .viewLeft {
+    border: solid 2px blue;
+  }
+</style>

@@ -36,6 +36,8 @@
       </div><!-- end preduct -->
     </div>
   </div>
+  <!-- nested-routes -->
+  <router-view class="nested-routes"></router-view>
 </div>
 </template>
 

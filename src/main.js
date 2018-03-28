@@ -1,3 +1,4 @@
+import './assets/css/bootstrap/stylesheets/_bootstrap.scss';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store';
@@ -59,7 +60,24 @@ const router = new VueRouter({
       path: '/shop',
       name: 'shop',
       component: shop,
-      meta: { requiresAuth: true },
+      meta: { requiresAuth: false },
+      children: [ // 將會把對應到 path 的 component 放到 shop 的 <router-view />
+        {
+          path: 'cart', // url= shop/cart
+          component: cart,
+          meta: { requiresAuth: false },
+        },
+        {
+          path: 'todo', // url= shop/todo
+          component: todo,
+          meta: { requiresAuth: false },
+        },
+        {
+          path: 'hello', // url= shop/hello
+          component: Hello,
+          meta: { requiresAuth: false },
+        },
+      ],
     },
     {
       path: '/cart',
@@ -79,8 +97,18 @@ const router = new VueRouter({
       component: login,
       meta: { requiresAuth: false },
     },
+    {
+      path: '/multiple',
+      name: 'multiple',
+      // 多重顯示設定為：component`s`
+      components: {
+        viewLeft: shop,
+        viewRight: cart,
+      },
+      meta: { requiresAuth: false },
+    },
 
-    { path: '/*', redirect: '/login' }
+    { path: '/*', redirect: '/multiple' }
   ]
 });
 
