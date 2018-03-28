@@ -14,11 +14,20 @@
         <label for="inputPassword" class="sr-only">Password</label>
         <input
           v-model="password"
+          v-toggle-password="togglePassword"
           @keyup.enter="login"
           type="password"
           id="inputPassword"
           class="form-control"
           placeholder="Password" required />
+        <div class="squaredFour" style="margin: 20px 10px;">
+          <input
+            type="checkbox"
+            v-model="togglePassword"
+            id="togglePassword" />
+          <label for="togglePassword" class="checkbox-icon"></label>
+          <label for="togglePassword">顯示密碼</label>
+        </div>
         <button
           class="btn btn-lg btn-primary btn-block"
           type="submit"
@@ -39,6 +48,7 @@ export default {
     return {
       email: 'test@test.com',
       password: '',
+      togglePassword: false,
     }
   },
   methods: {
@@ -102,7 +112,6 @@ export default {
     border-bottom-left-radius: 0;
   }
   .form-signin input[type="password"] {
-    margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }

@@ -6,6 +6,9 @@ import shop from './pages/shop.vue';
 import cart from './pages/cart.vue';
 import open1999 from './pages/open1999.vue';
 
+// directive
+import './directive/custom-directive.js';
+
 // init
 Vue.use(VueRouter)
 
