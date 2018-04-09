@@ -18,7 +18,7 @@
         :class="{ 'w3-grayscale-max': !item.inventory }">
         <img :src="item.image" style="width: 100%;">
         <h3>{{ item.title }}</h3>
-        <h4>${{ item.price }}</h4>
+        <h4>{{ item.price | currency }}</h4>
         <button
           class="w3-btn w3-round-large w3-large w3-padding-large"
           :class="{

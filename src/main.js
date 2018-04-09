@@ -9,6 +9,9 @@ import open1999 from './pages/open1999.vue';
 // directive
 import './directive/custom-directive.js';
 
+// filter
+import './filters/custom-filter.js';
+
 // init
 Vue.use(VueRouter)
 
@@ -22,6 +25,7 @@ import learnComponent from './pages/learnComponent.vue';
 import count from './pages/count.vue';
 import todo from './pages/todo.vue';
 import login from './pages/login.vue';
+import demoFilter from './pages/demoFilter.vue';
 
 const router = new VueRouter({
 
@@ -110,7 +114,12 @@ const router = new VueRouter({
       },
       meta: { requiresAuth: false },
     },
-
+    {
+      path: '/filter',
+      name: 'filter',
+      component: demoFilter,
+      meta: { requiresAuth: false },
+    },
     { path: '/*', redirect: '/multiple' }
   ]
 });
