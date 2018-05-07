@@ -1,8 +1,10 @@
 import * as types from './mutations_types.js';
+import Vue from 'vue';
 
 export const state = {
   loading: false,
   token: '',
+  lang: 'en',
 }
 
 export const actions = {
@@ -26,7 +28,10 @@ export const actions = {
         }
       }, 1500);
     });
-  }
+  },
+  setLanguage ({ commit }, lang) {
+    commit(types.LANGUAGE, lang);
+  },
 }
 
 export const mutations = {
@@ -35,5 +40,9 @@ export const mutations = {
   },
   [types.TOKEN] (state, token) {
     state.token = token;
+  },
+  [types.LANGUAGE] (state, setlang) {
+    state.lang = setlang;
+    Vue.config.lang = state.lang;
   },
 }

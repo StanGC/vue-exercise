@@ -1,19 +1,38 @@
 import './assets/css/bootstrap/stylesheets/_bootstrap.scss';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueI18n from 'vue-i18n';
 import store from './store';
 import shop from './pages/shop.vue';
 import cart from './pages/cart.vue';
 import open1999 from './pages/open1999.vue';
+
+// init
+Vue.use( VueRouter );
+Vue.use( VueI18n );
+
+// i18n
+import en from './i18n/en.json';
+import tw from './i18n/tw.json';
+
+const locales = {
+  en,
+  tw,
+};
+
+// 取得 state 預設值
+// lang 對應 locales 的 key
+Vue.config.lang = store.state.lang; // 從 state 獲取預設語言設定。
+
+Object.keys(locales).forEach(function (lang) {
+  Vue.locale(lang, locales[lang]);
+});
 
 // directive
 import './directive/custom-directive.js';
 
 // filter
 import './filters/custom-filter.js';
-
-// init
-Vue.use(VueRouter)
 
 // root page
 import App from './App.vue';
@@ -120,7 +139,7 @@ const router = new VueRouter({
       component: demoFilter,
       meta: { requiresAuth: false },
     },
-    { path: '/*', redirect: '/multiple' }
+    { path: '/*', redirect: '/login' }
   ]
 });
 
